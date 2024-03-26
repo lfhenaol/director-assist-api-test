@@ -5,7 +5,6 @@
   "private": true,
   "main": "./api/index.js",
   "dependencies": {
-    "fastify": "^4.25.2",
-    "vercel": "^33.6.1"
+    "fastify": "^4.25.2"
   }
 }
