@@ -62,7 +62,7 @@ app.get("/api", async (request, reply) => {
   };
 });
 
-fastify.post("/management/entidades/consultar-entidades", async (request, reply) => {
+app.post("/management/entidades/consultar-entidades", async (request, reply) => {
   reply.type("application/json").code(200);
 
   await sleep(Math.random() * 1000);
