@@ -2,6 +2,11 @@ import Fastify from 'fastify';
 import { LOGIN_RESPONSE } from './login_response';
 import { LIST_ENTIDADES } from './entidades_response';
 import { makeid } from './utils';
+import { SERVICIOS_RESPONSE } from './servicios_response';
+import { USUARIOS_SUBSEDE } from './usuarios_subsede_response';
+import { LISTA_PERSONAS } from './lista_personas_response';
+import { LISTA_MEDIO_ATENCION } from './lista_medio_atencion';
+import { LISTA_TAQUILLAS } from './lista_taquillas';
 
 const app = Fastify({
   logger: true,
@@ -74,7 +79,7 @@ app.post("/management/entidades/consultar-entidades", async (request, reply) => 
   };
 });
 
-app.get("/lista-turnos-citas", async (request, reply) => {
+app.get("/panorama-operacion/turnos-citas/lista-turnos-citas", async (request, reply) => {
   reply.type("application/json").code(200);
 
   return {
@@ -95,6 +100,36 @@ app.get("/lista-turnos-citas", async (request, reply) => {
     message: "Success get Lista turnos citas - Panorama de la operaci\u00f3n",
     success: true,
   };
+});
+
+app.get("/panorama-operacion/servicios/consultar-servicios", async (request, reply) => {
+  reply.type("application/json").code(200);
+
+  return SERVICIOS_RESPONSE;
+});
+
+app.get("/panorama-operacion/usuario/consultar-usuarios-subsede", async (request, reply) => {
+  reply.type("application/json").code(200);
+
+  return USUARIOS_SUBSEDE;
+});
+
+app.get("/panorama-operacion/usuario/lista-personas", async (request, reply) => {
+  reply.type("application/json").code(200);
+
+  return LISTA_PERSONAS;
+});
+
+app.get("/panorama-operacion/turnos-citas/lista-medio-atencion", async (request, reply) => {
+  reply.type("application/json").code(200);
+
+  return LISTA_MEDIO_ATENCION;
+});
+
+app.get("/panorama-operacion/taquillas/lista-taquillas", async (request, reply) => {
+  reply.type("application/json").code(200);
+
+  return LISTA_TAQUILLAS;
 });
 
 app.listen({ port: 4321, host: "0.0.0.0" }, (err, address) => {
